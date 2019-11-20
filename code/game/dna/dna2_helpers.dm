@@ -185,7 +185,7 @@
 		if((0 < beard) && (beard <= GLOB.facial_hair_styles_list.len))
 			H.f_style = GLOB.facial_hair_styles_list[beard]
 
-// MITHRAstation Edit - Start
+//BastionStation Edit - Start
 
 		// Ears
 		var/ears = dna.GetUIValueRange(DNA_UI_EAR_STYLE, ear_styles_list.len + 1) - 1
@@ -236,9 +236,9 @@
 			var/datum/species/custom/new_CS = CS.produceCopy(dna.base_species,dna.species_traits,src)
 			new_CS.blood_color = dna.blood_color
 
-// MITHRAstation Edit - End
+// BastionStation Edit - End
 
-		H.force_update_organs()	//MITHRAstation Edit
+//		H.force_update_organs()	//BastionStation Edit
 		H.force_update_limbs()
 		H.update_body()
 		H.update_eyes()
@@ -247,13 +247,6 @@
 		return 1
 	else
 		return 0
-
-//Mithratation edit - start
-/mob/living/carbon/human/proc/force_update_organs()
-	for(var/organ in organs + internal_organs)
-		var/obj/item/organ/O = organ
-		O.species = species
-//Mithratation edit - end
 
 // Used below, simple injection modifier.
 /proc/probinj(var/pr, var/inj)
