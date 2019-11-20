@@ -1,6 +1,4 @@
-////////WARNING////////
-//	THIS FILE HAS BEEN BUTCHERED TO ADD CUSTOM SPECIES, ENSURE NO REGRESSIONS OCCUR WHEN SYNCING WITH UPSTREAM
-/*
+/**
 * DNA 2: The Spaghetti Strikes Back
 *
 * @author N3X15 <nexisentertainment@gmail.com>
@@ -56,7 +54,7 @@
 #define DNA_UI_WING_B 		35 // end snippet
 #define DNA_UI_LENGTH      35 // Updated for all those custom species
 
-#define DNA_SE_LENGTH 46	//Formula for this is UI+11, hence the edit
+#define DNA_SE_LENGTH 27
 // For later:
 //#define DNA_SE_LENGTH 50 // Was STRUCDNASIZE, size 27. 15 new blocks added = 42, plus room to grow.
 
@@ -99,13 +97,6 @@ var/global/list/datum/dna/gene/dna_genes[0]
 	var/b_type = "A+"  // Should probably change to an integer => string map but I'm lazy.
 	var/real_name          // Stores the real name of the person who originally got this dna datum. Used primarily for changelings,
 
-	// MITHRAstation CUSTOM SPECIES
-	var/custom_species
-	var/base_species = "Custom Human"
-	var/list/species_traits = list()
-	var/blood_color = "#A10808"
-	// MITHRAstation CUSTOM SPECIES END
-
 	// New stuff
 	var/species = SPECIES_HUMAN
 	var/s_base = ""
@@ -121,9 +112,9 @@ var/global/list/datum/dna/gene/dna_genes[0]
 	new_dna.species=species
 	new_dna.body_markings=body_markings.Copy()
 	new_dna.s_base=s_base
-	new_dna.base_species=base_species //MITHRAstation Edit
-	new_dna.species_traits=species_traits.Copy() //MITHRAstation Edit
-	new_dna.blood_color=blood_color //MITHRAstation Edit
+	new_dna.base_species=base_species //BastionStation Edit
+	new_dna.species_traits=species_traits.Copy() //BastionStation Edit
+	new_dna.blood_color=blood_color //BastionStation Edit
 	for(var/b=1;b<=DNA_SE_LENGTH;b++)
 		new_dna.SE[b]=SE[b]
 		if(b<=DNA_UI_LENGTH)
@@ -160,7 +151,7 @@ var/global/list/datum/dna/gene/dna_genes[0]
 		character.f_style = "Shaved"
 	var/beard	= GLOB.facial_hair_styles_list.Find(character.f_style)
 
-// MITHRAStation Edit Start
+// BastionStation Edit Start
 
 	// Demi Ears
 	var/ear_style = 0
@@ -210,7 +201,7 @@ var/global/list/datum/dna/gene/dna_genes[0]
 	SetUIValueRange(DNA_UI_EARS2_G,   character.g_ears2,   255,    1)
 	SetUIValueRange(DNA_UI_EARS2_B,   character.b_ears2,   255,    1)
 
-// MITHRAstation Edit End
+// BastionStation Edit End
 
 	SetUIValueRange(DNA_UI_HAIR_R,    character.r_hair,    255,    1)
 	SetUIValueRange(DNA_UI_HAIR_G,    character.g_hair,    255,    1)
